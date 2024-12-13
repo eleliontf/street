@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="ei4JHAxX82JuKSIVADatogyc0Pmq1eHiwfO8H5zJ">
+        <title>Solana Fortune | Account Transactions History</title>
+        <link rel="icon" href="../storage/app/public/photos/V28s9DMinimalist Red Green Financial Audit Company Logo (50 x 50 px)(1).png1705143061" type="image/png"/>
+        
+                    <!-- Fonts and icons -->
+            <script src="../dash/js/plugin/webfont/webfont.min.js"></script>
+        <!-- Sweet Alert -->
+            <script src="../dash/js/plugin/sweetalert/sweetalert.min.js"></script>
+            <!-- CSS Files -->
+    
+            <link rel="stylesheet" href="{{ url_for('static', filename='dash/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash/css/fonts.min.css') }}">
+    
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash/css/atlantis.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash/css/atlantis.min.css') }}">
+    
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/af-2.3.5/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/b-print-1.6.3/r-2.2.5/datatables.min.css"/>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>		
+                
+            <!-- Bootstrap Notify -->
+            <link rel="stylesheet" href="{{ url_for('static', filename='dash/js/plugin/bootstrap-notify.min.js') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='dash/js/plugin/sweetalert/sweetalert.min.js') }}">
+            
+            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+            <style>[wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid] {display: none;}[wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {animation-duration: 50000s;animation-name: livewireautofill;}@keyframes livewireautofill { from {} }</style>
+    
+             <!--PayPal-->
+             <script>
+                // Add your client ID and secret
+                var PAYPAL_CLIENT = 'iidjdjdj';
+                var PAYPAL_SECRET = 'jijdjkdkdk';
+                
+                // Point your server to the PayPal API
+                var PAYPAL_ORDER_API = 'https://api.paypal.com/v2/checkout/orders/';
+            </script>
+            <script src="https://www.paypal.com/sdk/js?client-id=iidjdjdj"></script>
+            
+    </head>
+<body data-background-color="dark">
+    <div id="app">
+        
+        <!--/PayPal-->
+            
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        {tawk to codess}
+        </script>
+        <!--End of Tawk.to Script-->
+		<div class="wrapper">
+			        <div class="main-header">
+    <!-- Logo Header -->
+    <div class="logo-header" data-background-color="blue">
+        <a href="https://finfortune.biz/" class="logo" style="font-size: 27px; color:#fff;">
+            Solana Fortune
+        </a>
+        <button class="ml-auto navbar-toggler sidenav-toggler" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <i class="icon-menu"></i>
+            </span>
+        </button>
+        <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+        <div class="nav-toggle">
+            <button class="btn btn-toggle toggle-sidebar">
+                <i class="icon-menu"></i>
+            </button>
+        </div>
+    </div>
+    <!-- End Logo Header -->
+
+    <!-- Navbar Header -->
+    <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue">
+        
+        <div class="container-fluid">
+            <div class="text-center d-md-block d-none">
+                <a href="{{ url_for('deposits') }}" class="pricing-action btn btn-warning btn-sm">Fund your Account</a> &nbsp;
+                <a href="{{ url_for('withdrawals') }}" class="pricing-action btn btn-danger btn-sm">Withdraw Funds</a>
+                
+            </div>
+            <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+               
+                <li class="nav-item hidden-caret">
+                    <form action="javascript:void(0)" method="post" id="styleform" class="form-inline">
+                       
+                        <div class="form-group">
+                            <label class="style_switch">
+                                <input name="style" id="style" type="checkbox" value="true" class="modes">
+                                <span class="slider round"></span>
+                            </label>
+                        </div> 
+                                                <script>document.getElementById("style").checked= true;</script>
+                                                <input type="hidden" name="_token" value="ei4JHAxX82JuKSIVADatogyc0Pmq1eHiwfO8H5zJ">
+                    </form>
+                </li>
+                               
+                                <li class="nav-item dropdown hidden-caret">
+                    <a class="nav-link" data-toggle="dropdown" href="{{ url_for('asset_balance') }}" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user animated fadeIn">
+                        <div class="dropdown-user-scroll scrollbar-outer">
+                            <li>
+                                <div class="user-box">
+                                    
+                                    <div class="u-text">
+										<h4>{{ username }}</h4>
+                                        <p class="text-muted">jerry@gmail.com</p><a                 class="dropdown-item" href="{{ url_for('withdrawals') }}">Withdraw</>
+										class="btn btn-xs btn-secondary btn-sm">Account Settings</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url_for('deposits') }}">Deposit</a>
+                                <a class="dropdown-item" href="{{ url_for('withdrawals') }}">Withdraw</a>
+                                <a class="dropdown-item" href="{{ url_for('buy_plan') }}">Buy Plan</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url_for('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Logout
+                                    </a>
+                                <form id="logout-form" action="href="{{ url_for('register') }}" method="POST" style="display: none;">
+                                    <input type="hidden" name="_token" value="ei4JHAxX82JuKSIVADatogyc0Pmq1eHiwfO8H5zJ">
+                                </form> 
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+</div>
+<script type="text/javascript">
+    //create investment
+        $("#styleform").on('change',function(){
+        $.ajax({
+            url: "https://finfortune.biz/dashboard/changetheme",
+            type: 'POST',
+            data:$("#styleform").serialize(),
+            success: function (data) {
+				location.reload(true);
+            },
+            error: function (data) {
+                console.log(data);
+            },
+
+        });
+    });
+    
+</script>        <!-- Stored in resources/views/child.blade.php -->
+
+<!-- Sidebar -->
+
+<div class="sidebar sidebar-style-2" data-background-color="light">
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <div class="user">
+                <div class="info">
+                    <a data-toggle="collapse" href="asset-balance.html#collapseExample" aria-expanded="true">
+                        <span>
+                            {{ username }}
+                            
+                            <span class="caret"></span>
+                        </span>
+                    </a>
+                    <div class="clearfix"></div>
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="{{ url_for('account_settings') }}">
+                                    <span class="link-collapse">Account Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-primary">
+                <li class="nav-item ">
+                    <a href="{{ url_for('dashboard') }}">
+                        <i class="fas fa-home"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item d-md-none active ">
+                    <a href="{{ url_for('deposits') }}">
+                        <i class="fa fa-download " aria-hidden="true"></i>
+                        <p>Fund your Account</p>
+                    </a>
+                </li>
+                <li class="nav-item d-md-none  ">
+                    <a href="{{ url_for('withdrawals') }}">
+                        <i class="fa fa-arrow-alt-circle-up " aria-hidden="true"></i>
+                        <p>Withdraw Funds</p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a href="{{ url_for('trading_history') }}">
+                        <i class="fa fa-signal " aria-hidden="true"></i>
+                        <p>Profit Record</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ url_for('account_history') }}">
+                        <i class="fa fa-briefcase " aria-hidden="true"></i>
+                        <p>Transactions history</p>
+                    </a>
+                </li>
+                                    <li class="nav-item ">
+                        <a href="{{ url_for('asset_balance') }}">
+                            <i class="fa fa-coins" aria-hidden="true"></i>
+                            <p>Crypto Exchange</p>
+                        </a>
+                    </li>
+                                                
+                <li class="nav-item  ">
+                    <a data-toggle="collapse" href="{{ url_for('deposits') }}">
+                        <i class="fas fa-cubes"></i>
+                        <p>Invest</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="mpack">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ url_for('buy_plan') }}">
+                                    <span class="sub-item">Subscribe to a Plan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('withdrawals') }}">
+                                    <span class="sub-item">My Investment</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>  
+                <li class="nav-item ">
+                    <a href="{{ url_for('refer_user') }}">
+                        <i class="fa fa-recycle " aria-hidden="true"></i>
+                        <p>Refer Users</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ url_for('withdrawals') }}">
+                        <i class="fa fa-life-ring" aria-hidden="true"></i>
+                        <p>Help/Support</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Sidebar -->
+        <div class="main-panel bg-light">
+			<div class="content bg-light">
+				<div class="page-inner">
+					<div class="mt-2 mb-4">
+						<h1 class="title1 text-dark">Crypto Exchange</h1>
+					</div>
+					<div>
+    </div>					<div>
+    </div>					<div class="row">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-75" src="https://img.icons8.com/office/16/000000/us-dollar--v2.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>€5.00</b></h5>
+                                        <small class="text-muted">Account Balance</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                  <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/color/48/000000/bitcoin--v1.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>0 BTC</b></h5>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                        						                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/fluency/48/000000/ethereum.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>0 ETH</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/fluency/48/000000/litecoin.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>0 LTC</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/cotton/64/000000/chainlink.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>0 LINK</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                        
+                                                <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>0 BNB</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                        
+                                                <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://s2.coinmarketcap.com/static/img/coins/64x64/2010.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>0 ADA</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                        
+                                                <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-25" src="https://dynamic-assets.coinbase.com/6ad513d3c9108b163cf0a4c9fd3441cadcb9cf656ea7b9fb333eb7e4a94cd503528e0a94188285d31aedfc392f0793fd4161f7ad4e04d5f6b82e4d70a314d295/asset_icons/80f3d2256652f5ccd680fc48702d130dd01f1bd7c9737fac560a02949efac3b9.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>0 AAVE</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/color/48/000000/tether--v2.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>0 USDT</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-75" src="https://img.icons8.com/material-sharp/24/000000/bitcoin.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>0 BCH</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/fluency/48/000000/ripple.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>0 XRP</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/ios/50/000000/stellar.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>0 XLM</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                        					</div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="tradingview-widget-container">
+                                <div id="tradingview_f933e"></div>
+                                <div class="tradingview-widget-copyright">
+                                    <a href="{{ url_for('asset_balance') }}" rel="noopener" target="_blank"><span class="blue-text"></span> <span class="blue-text">Personal trading chart</span></a>
+                                </div>                 
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <form method="POST" action="javascript:void(0)" id="exchnageform">
+                                <input type="hidden" name="_token" value="ei4JHAxX82JuKSIVADatogyc0Pmq1eHiwfO8H5zJ">                                <div class="form-group">
+                                    <h5 class="text-dark">Source Account</h5>
+                                    <select  class="form-control text-dark bg-light" name="source" id="sourceasset">
+                                                                                <option value="btc">BTC</option> 
+                                                                                                                        <option value="link">LINK</option> 
+                                                                                                                        <option value="bnb">BNB</option> 
+                                                                                                                        <option value="ada">ADA</option> 
+                                                                                                                        <option value="aave">AAVE</option> 
+                                                                                                                        <option value="xlm">XLM</option> 
+                                                                                                                        <option value="xrp">XRP</option> 
+                                                                                                                        <option value="ltc">LTC</option> 
+                                                                                                                        <option value="bch">BCH</option> 
+                                                                                                                        <option value="eth">ETH</option> 
+                                                                                                                        <option value="usdt">USDT</option> 
+                                                                                <option value="usd">USD</option> 
+                                    </select>
+                                </div>
+                  
+                                <div class="form-group">
+                                    <h5 class="text-dark">Destination Account</h5>
+                                    <select name="destination" class="form-control text-dark bg-light" id="destinationasset">
+                                        <option value="usd">USD</option> 
+                                                                                <option value="btc">BTC</option> 
+                                                                                                                        <option value="link">LINK</option> 
+                                                                                                                        <option value="bnb">BNB</option> 
+                                                                                                                        <option value="ada">ADA</option> 
+                                                                                                                        <option value="aave">AAVE</option> 
+                                                                                                                        <option value="xlm">XLM</option> 
+                                                                                                                        <option value="xrp">XRP</option> 
+                                                                                                                        <option value="ltc">LTC</option> 
+                                                                                                                        <option value="bch">BCH</option> 
+                                                                                                                        <option value="eth">ETH</option> 
+                                                                                                                        <option value="usdt">USDT</option> 
+                                                                            </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <h5 class="text-dark">Amount</h5>
+                                    <input type="text" name="amount" class="form-control text-dark bg-light" placeholder="Enter amount of btc" id="amount">
+                                </div>
+                                <div class="form-group">
+                                    <h5 class="text-dark">You will get</h5>
+                                    <input type="text"  class="form-control text-dark bg-light" placeholder="Quantity of usd" id="quantity">
+                                </div>
+                                <input type="hidden" id="realquantity" name="quantity">
+                                <div class="form-group">
+                                    <span class="mb-1 ml-2 caption">
+                                        <span class="text-dark"><b>Fees = 2%</b></span>
+                                    </span>
+                                </div>
+                  
+                                <div class="cta inline-group">
+                                    <button class="btn btn-success btn-block btn-sm" disbaled>
+                                        Exchange
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+				</div>
+			</div>
+            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+            <script type="text/javascript">
+            function Market(market) {
+                new TradingView.widget({
+                    "width": "100%",
+                    "height": "400",
+                    "symbol": market,
+                    "interval": "1",
+                    "timezone": "Etc/UTC",
+                    "theme": 'dark',
+                    "style": "9",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "hide_side_toolbar": false,
+                    "allow_symbol_change": true,
+                    "calendar": false,
+                    "container_id": "tradingview_f933e"
+                });
+            }
+            
+            
+        </script>
+
+        <script>
+    //load chart
+    Market("BINANCE:BTCUSD");
+            
+    let destinationasset = document.getElementById('destinationasset');
+    let sourceasset = document.getElementById('sourceasset');
+    let amount = document.getElementById('amount');
+    let quatity = document.getElementById('quantity');
+    // console.log(destinationasset);
+
+    destinationasset.addEventListener('change', validate);
+    sourceasset.addEventListener('change', validate);
+    if (destinationasset.value == sourceasset.value) {
+        $.notify({
+            // options
+            icon: 'flaticon-alarm-1',
+            title: 'Success',
+            message: 'Source and Destination account cannot be thesame',
+        },{
+            type: 'danger',
+        });
+                
+        destinationasset.value = '';
+        amount.placeholder = '';
+        quatity.placeholder = '';
+        amount.value = '';
+        quatity.value = '';
+    } else {
+        amount.placeholder = `Enter amount of ${sourceasset.value}`;
+        quatity.placeholder = `Quantity of ${destinationasset.value}`;
+
+    }
+    function validate(){
+        Market("BINANCE:"+sourceasset.value.toUpperCase()+"USD");
+        amount.value = '';
+        quatity.value = '';
+        if (destinationasset.value == sourceasset.value) {
+            $.notify({
+                // options
+                icon: 'flaticon-alarm-1',
+                title: 'Success',
+                message: 'Source and Destination account cannot be thesame',
+            },{
+                type: 'danger',
+            });
+                  
+            destinationasset.value = '';
+            amount.placeholder = '';
+            quatity.placeholder = '';
+            amount.value = '';
+            quatity.value = '';
+        } else {
+            amount.placeholder = `Enter amount of ${sourceasset.value}`;
+            quatity.placeholder = `Quantity of ${destinationasset.value}`;
+
+        }
+    }
+
+    amount.addEventListener('keyup', getQuantity);
+
+    function getQuantity(){
+        let uurl = "https://finfortune.biz/dashboard/asset-price" + '/' + sourceasset.value  + '/' + destinationasset.value+ '/' + amount.value;
+        $.ajax({
+            url: uurl,
+            type: 'GET',
+            
+            success: function(response) {
+                if (response.status === 200) {
+                    //console.log(response.data);
+                    quatity.value = response.data + ' ' + destinationasset.value;
+                    document.getElementById('realquantity').value = response.data;
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            },
+    
+        });
+    }
+
+    $('#exchnageform').on('submit', function(event) {
+        event.preventDefault();
+        if (amount.value == '') {
+            $.notify({
+                // options
+                icon: 'flaticon-alarm-1',
+                title: 'Success',
+                message: 'Please Enter an Amount to Exchange',
+            },{
+                type: 'danger',
+            });
+        }else{
+            $.ajax({
+                url: "https://finfortune.biz/dashboard/exchange",
+                type: 'POST',
+                data: $('#exchnageform').serialize(),
+                success: function(response) {
+                    if (response.status === 200) {
+                        $.notify({
+                            icon: 'flaticon-alarm-1',
+                            title: 'Success',
+                            message: response.success,
+                        },{
+                            type: 'success',
+                        });
+
+                        setTimeout(function(){ window.location.reload(true);}, 3000);
+                        
+                    } else {
+                        $.notify({
+                            icon: 'flaticon-alarm-1',
+                            title: 'Error',
+                            message: response.message,
+                        },{
+                            type: 'danger',
+                        });
+                    }
+                },
+                error: function(data) {
+                    console.log(data);
+                },
+        
+            });
+        }
+        
+    });
+    
+</script>					<footer class="footer bg-light text-dark">
+					<div class="container-fluid">
+						<div class="text-center row copyright text-align-center">
+							<p>All Rights Reserved &copy; Solana Fortune 2024</p>
+						</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+
+				<!--   Core JS Files   -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+                <script src="{{ url_for('static', filename='dash/js/core/popper.min.js') }}"></script>
+                <script src="{{ url_for('static', filename='dash/js/core/bootstrap.min.js') }}"></script>
+                <script src="{{ url_for('static', filename='dash/js/customs.js') }}"></script>
+        
+                <!-- jQuery UI -->
+                <script src="{{ url_for('static', filename='dash/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
+                <script src="{{ url_for('static', filename='dash/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
+        
+                <!-- jQuery Scrollbar -->
+                <script src="{{ url_for('static', filename='dash/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
+        
+                <!-- jQuery Sparkline -->
+                <script src="{{ url_for('static', filename='dash/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
+        
+                <!-- Sweet Alert -->
+                <script src="{{ url_for('static', filename='dash/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
+        
+                <!-- Bootstrap Notify -->
+                <script src="{{ url_for('static', filename='dash/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/af-2.3.5/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/b-print-1.6.3/r-2.2.5/datatables.min.js"></script>
+
+		<script src="{{ url_for('static', filename='dash/js/atlantis.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='dash/js/atlantis.js') }}"></script>
+
+		<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+		<script type="text/javascript">
+			function googleTranslateElementInit() {
+			new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+			}
+		</script>
+
+		<script type="text/javascript">
+			var badWords = [ 
+				'<!--Start of Tawk.to Script-->',
+				'<script type="text/javascript">', 
+				'<!--End of Tawk.to Script-->'
+						];
+			$(':input').on('blur', function(){
+				var value = $(this).val();
+				$.each(badWords, function(idx, word){
+					value = value.replace(word, '');
+				});
+				$(this).val( value);
+			});
+		</script>
+		<script>
+			$(document).ready( function () {
+				$('#ShipTable').DataTable({
+					order: [ [0, 'desc'] ],
+					dom: 'Bfrtip',
+					buttons: [
+					'copy', 'csv', 'print', 'excel','pdf'
+				] 
+				});
+
+				
+				$(".dataTables_length select").addClass("bg-light text-dark");
+				$(".dataTables_filter input").addClass("bg-light text-dark");
+			} );
+		</script>
+		<script>
+			$(document).ready( function () {
+				$('.UserTable').DataTable({
+					order: [ [0, 'desc'] ]
+				});
+				$(".dataTables_length select").addClass("bg-light text-dark");
+				$(".dataTables_filter input").addClass("bg-light text-dark");
+			} );
+		</script>
+				<script src="{{ url_for('static', filename='livewire/livewire-id=25f025805c3c370f7e87.js') }}" data-turbo-eval="false" data-turbolinks-eval="false"></script><script data-turbo-eval="false" data-turbolinks-eval="false">window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = 'ei4JHAxX82JuKSIVADatogyc0Pmq1eHiwfO8H5zJ';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};document.addEventListener("DOMContentLoaded", function () {window.livewire.start();});</script>
+	    
+</body>
+</html>
+

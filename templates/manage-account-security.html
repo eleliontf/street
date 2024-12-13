@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- CSRF Token -->
+		<meta name="csrf-token" content="ei4JHAxX82JuKSIVADatogyc0Pmq1eHiwfO8H5zJ">
+		<title>Solana Fortune | Account Transactions History</title>
+		<link rel="icon" href="{{ url_for('static', filename='app/public/photos/V28s9DMinimalist Red Green Financial Audit Company Logo (50 x 50 px)(1).png1705143061') }}" type="image/png"/>
+		
+					<!-- Fonts and icons -->
+					<link href="{{ url_for('static', filename='dash/js/plugin/webfont/webfont.min.js') }}" rel="stylesheet" type="text/css" />
+
+					<!-- Sweet Alert -->
+					<link href="{{ url_for('static', filename='dash/js/plugin/sweetalert/sweetalert.min.js') }}" rel="stylesheet" type="text/css" />
+			<!-- CSS Files -->
+	
+			<link rel="stylesheet" href="{{ url_for('static', filename='dash/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='dash/css/fonts.min.css') }}">
+	
+	
+	<link rel="stylesheet" href="{{ url_for('static', filename='dash/css/atlantis.min.css') }}">
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='dash/css/custom.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='dash/css/style.css') }}">
+	
+	
+			<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/af-2.3.5/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/b-print-1.6.3/r-2.2.5/datatables.min.css"/>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>		
+				
+			<!-- Bootstrap Notify -->
+			<link rel="stylesheet" href="{{ url_for('static', filename='dash/js/plugin/bootstrap-notify.min.js') }}">
+			<link rel="stylesheet" href="{{ url_for('static', filename='dash/js/plugin/sweetalert/sweetalert.min.js') }}">
+			
+			<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+			<script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+			<style>[wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid] {display: none;}[wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {animation-duration: 50000s;animation-name: livewireautofill;}@keyframes livewireautofill { from {} }</style>
+	
+			 <!--PayPal-->
+			 <script>
+				// Add your client ID and secret
+				var PAYPAL_CLIENT = 'iidjdjdj';
+				var PAYPAL_SECRET = 'jijdjkdkdk';
+				
+				// Point your server to the PayPal API
+				var PAYPAL_ORDER_API = 'https://api.paypal.com/v2/checkout/orders/';
+			</script>
+			<script src="https://www.paypal.com/sdk/js?client-id=iidjdjdj"></script>
+			
+	</head>
+<body data-background-color="dark">
+    <div id="app">
+        
+        <!--/PayPal-->
+            
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        {tawk to codess}
+        </script>
+        <!--End of Tawk.to Script-->
+		<div class="wrapper">
+			        <div class="main-header">
+    <!-- Logo Header -->
+    <div class="logo-header" data-background-color="dark">
+        <a href="{{ url_for('index') }}" class="logo" style="font-size: 27px; color:#fff;">
+            Solana Fortune
+        </a>
+        <button class="ml-auto navbar-toggler sidenav-toggler" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <i class="icon-menu"></i>
+            </span>
+        </button>
+        <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+        <div class="nav-toggle">
+            <button class="btn btn-toggle toggle-sidebar">
+                <i class="icon-menu"></i>
+            </button>
+        </div>
+    </div>
+    <!-- End Logo Header -->
+
+    <!-- Navbar Header -->
+    <nav class="navbar navbar-header navbar-expand-lg" data-background-color="dark">
+        
+        <div class="container-fluid">
+            <div class="text-center d-md-block d-none">
+                <a href="{{ url_for('deposits') }}" class="pricing-action btn btn-warning btn-sm">Fund your Account</a> &nbsp;
+                <a href="{{ url_for('withdrawals') }}" class="pricing-action btn btn-danger btn-sm">Withdraw Funds</a>
+                
+            </div>
+            <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+               
+                <li class="nav-item hidden-caret">
+                    <form action="javascript:void(0)" method="post" id="styleform" class="form-inline">
+                       
+                        <div class="form-group">
+                            <label class="style_switch">
+                                <input name="style" id="style" type="checkbox" value="true" class="modes">
+                                <span class="slider round"></span>
+                            </label>
+                        </div> 
+                                                <script>document.getElementById("style").checked= true;</script>
+                                                <input type="hidden" name="_token" value="ei4JHAxX82JuKSIVADatogyc0Pmq1eHiwfO8H5zJ">
+                    </form>
+                </li>
+                               
+                                <li class="nav-item dropdown hidden-caret">
+                    <a class="nav-link" data-toggle="dropdown" href="manage-account-security.html#" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user animated fadeIn">
+                        <div class="dropdown-user-scroll scrollbar-outer">
+                            <li>
+                                <div class="user-box">
+                                    
+                                    <div class="u-text">
+										<h4>{{ username }}</h4>
+                                        <p class="text-muted">jerry@gmail.com</p><a class="dropdown-item" href="{{ url_for('withdrawals') }}">Withdraw</class=>
+										class="btn btn-xs btn-secondary btn-sm">Account Settings</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url_for('deposits') }}">Deposit</a>
+                                <a class="dropdown-item" href="{{ url_for('withdrawals') }}">Withdraw</a>
+                                <a class="dropdown-item" href="{{ url_for('buy_plan') }}">Buy Plan</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url_for('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Logout
+                                    </a>
+									<form id="logout-form" action="{{ url_for('register') }}" method="POST" style="display: none;">
+									</form>
+								<input type="hidden" name="_token" value="ei4JHAxX82JuKSIVADatogyc0Pmq1eHiwfO8H5zJ">
+									</form> 
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+</div>
+<script type="text/javascript">
+    //create investment
+        $("#styleform").on('change',function(){
+        $.ajax({
+            url: "https://finfortune.biz/dashboard/changetheme",
+            type: 'POST',
+            data:$("#styleform").serialize(),
+            success: function (data) {
+				location.reload(true);
+            },
+            error: function (data) {
+                console.log(data);
+            },
+
+        });
+    });
+    
+</script>        <!-- Stored in resources/views/child.blade.php -->
+
+<!-- Sidebar -->
+
+<div class="sidebar sidebar-style-2" data-background-color="dark">
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <div class="user">
+                <div class="info">
+                    <a data-toggle="collapse" href="manage-account-security.html#collapseExample" aria-expanded="true">
+                        <span>
+                            Jim hustein
+                            
+                            <span class="caret"></span>
+                        </span>
+                    </a>
+                    <div class="clearfix"></div>
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="{{ url_for('account_settings') }}">
+                                    <span class="link-collapse">Account Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-primary">
+                <li class="nav-item ">
+                    <a href="{{ url_for('dashboard') }}">
+                        <i class="fas fa-home"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item d-md-none active ">
+                    <a href="{{ url_for('deposits') }}">
+                        <i class="fa fa-download " aria-hidden="true"></i>
+                        <p>Fund your Account</p>
+                    </a>
+                </li>
+                <li class="nav-item d-md-none  ">
+                    <a href="{{ url_for('withdrawals') }}">
+                        <i class="fa fa-arrow-alt-circle-up " aria-hidden="true"></i>
+                        <p>Withdraw Funds</p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a href="{{ url_for('trading_history') }}">
+                        <i class="fa fa-signal " aria-hidden="true"></i>
+                        <p>Profit Record</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ url_for('account_history') }}">
+                        <i class="fa fa-briefcase " aria-hidden="true"></i>
+                        <p>Transactions history</p>
+                    </a>
+                </li>
+                                    <li class="nav-item ">
+                        <a href="{{ url_for('asset_balance') }}">
+                            <i class="fa fa-coins" aria-hidden="true"></i>
+                            <p>Crypto Exchange</p>
+                        </a>
+                    </li>
+                                                
+                <li class="nav-item  ">
+                    <a data-toggle="collapse" href="{{ url_for('deposits') }}">
+                        <i class="fas fa-cubes"></i>
+                        <p>Invest</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="mpack">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ url_for('buy_plan') }}">
+                                    <span class="sub-item">Subscribe to a Plan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('withdrawals') }}">
+                                    <span class="sub-item">My Investment</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>  
+                <li class="nav-item ">
+                    <a href="{{ url_for('refer_user') }}">
+                        <i class="fa fa-recycle " aria-hidden="true"></i>
+                        <p>Refer Users</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ url_for('withdrawals') }}">
+                        <i class="fa fa-life-ring" aria-hidden="true"></i>
+                        <p>Help/Support</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Sidebar -->
+        <div class="main-panel bg-dark">
+			<div class="content bg-dark">
+				<div class="page-inner">
+					<div class="mt-2 mb-4">
+						<h1 class="title1 text-light">Security/Account Deletion</h1>
+					</div>
+					<div>
+    </div>					<div>
+    </div>					
+					<div class="row">
+						<div class="col-md-8  col-offset-md-2 bg-dark p-md-3 p-2">
+                                                            <div>
+                                    <div wire:id="EydF6HhKMdYfE2TusOpk" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;EydF6HhKMdYfE2TusOpk&quot;,&quot;name&quot;:&quot;profile.two-factor-authentication-form&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;dashboard\/manage-account-security&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;2bb364d6&quot;,&quot;data&quot;:{&quot;showingQrCode&quot;:false,&quot;showingRecoveryCodes&quot;:false,&quot;confirmingPassword&quot;:false,&quot;confirmableId&quot;:null,&quot;confirmablePassword&quot;:&quot;&quot;},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;a3f569c3ce5b36124f6295e40514aa86313d86460e8c10ccd9aa4302cc21fb73&quot;}}" >
+    <div class="mt-5">
+        <div class="px-4 py-5 bg- shadow text-">
+            <h1 class="text-light">Two Factor Authentication</h1>
+        <h3 class="text-light">
+                            You have not enabled two factor authentication.
+                    </h3>
+
+        <div class="mt-3 text-sm text-light">
+           
+            <h5> Add additional security to your account using two factor authentication.</h5>
+            <p>
+                When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone&#039;s Google Authenticator application.
+            </p>
+        </div>
+
+        
+        <div class="mt-5">
+                            <span
+    wire:then="enableTwoFactorAuthentication"
+    x-data
+    x-ref="span"
+    x-on:click="$wire.startConfirmingPassword('ab2d1de5297198533ed96f794eb99eac')"
+    x-on:password-confirmed.window="setTimeout(() => $event.detail.id === 'ab2d1de5297198533ed96f794eb99eac' && $refs.span.dispatchEvent(new CustomEvent('then', { bubbles: false })), 250);"
+>
+    <button type="button" class="btn btn-primary btn-sm rounded inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 btn btn-primary" wire:loading.attr="disabled">
+    Enable
+</button>
+</span>
+
+<div
+    x-data="{
+        show: window.Livewire.find('EydF6HhKMdYfE2TusOpk').entangle('confirmingPassword') .defer,
+        focusables() {
+            // All focusable element types...
+            let selector = 'a, button, input, textarea, select, details, [tabindex]:not([tabindex=\'-1\'])'
+
+            return [...$el.querySelectorAll(selector)]
+                // All non-disabled elements...
+                .filter(el => ! el.hasAttribute('disabled'))
+        },
+        firstFocusable() { return this.focusables()[0] },
+        lastFocusable() { return this.focusables().slice(-1)[0] },
+        nextFocusable() { return this.focusables()[this.nextFocusableIndex()] || this.firstFocusable() },
+        prevFocusable() { return this.focusables()[this.prevFocusableIndex()] || this.lastFocusable() },
+        nextFocusableIndex() { return (this.focusables().indexOf(document.activeElement) + 1) % (this.focusables().length + 1) },
+        prevFocusableIndex() { return Math.max(0, this.focusables().indexOf(document.activeElement)) -1 },
+    }"
+    x-init="$watch('show', value => {
+        if (value) {
+            document.body.classList.add('overflow-y-hidden');
+        } else {
+            document.body.classList.remove('overflow-y-hidden');
+        }
+    })"
+    x-on:close.stop="show = false"
+    x-on:keydown.escape.window="show = false"
+    x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()"
+    x-on:keydown.shift.tab.prevent="prevFocusable().focus()"
+    x-show="show"
+    id="506a8cb247bad8f18658bdb3f794fabc"
+    class="jetstream-modal fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
+    style="display: none;"
+>
+    <div x-show="show" class="fixed inset-0 transform transition-all" x-on:click="show = false" x-transition:enter="ease-out duration-300"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="ease-in duration-200"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    </div>
+
+    <div x-show="show" class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:max-w-2xl sm:mx-auto"
+                    x-transition:enter="ease-out duration-300"
+                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                    x-transition:leave="ease-in duration-200"
+                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+        <div class="bg-dark" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title"><h3 class="text-light">Confirm Password</h3></h5>
+                </div>
+                <div class="modal-body">
+                    <p class="text-light"> For your security, please confirm your password to continue.</p>
+       
+        <div class="mt-4 border-none" x-data="{}" x-on:confirming-password.window="setTimeout(() => $refs.confirmable_password.focus(), 250)">
+            <input  class="border form-control bg-&lt;?php echo e($bg); ?&gt; text-&lt;?php echo e($text); ?&gt; rounded shadow form-control bg-dark text-light" type="password" placeholder="Password" x-ref="confirmable_password" wire:model.defer="confirmablePassword" wire:keydown.enter="confirmPassword">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="inline-flex items-center btn btn-secondary px-4 py-2 border" wire:click="stopConfirmingPassword" wire:loading.attr="disabled">
+    Cancel
+</button>
+
+        <button type="submit" class="btn btn-primary btn-sm rounded inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 ml-2" dusk="confirm-password-button" wire:click="confirmPassword" wire:loading.attr="disabled">
+    Confirm
+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+                    </div>
+        </div>
+    </div>
+</div>
+                                </div>
+                                                    </div>
+					</div>
+					<div class="row">
+						<div class="col-md-8  col-offset-md-2 bg-dark p-3">
+							<div class="mt-5">
+								<div wire:id="4DODWIaAJP2nmRqR7MxU" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;4DODWIaAJP2nmRqR7MxU&quot;,&quot;name&quot;:&quot;profile.logout-other-browser-sessions-form&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;dashboard\/manage-account-security&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;dfc69ba0&quot;,&quot;data&quot;:{&quot;confirmingLogout&quot;:false,&quot;password&quot;:&quot;&quot;},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;7fc71e4ae417b7507c1cd426995542811ba4a58dcc2210502ece320368df2ff9&quot;}}" >
+    <div class="mt-5">
+        <div class="px-4 py-5 bg- shadow text-">
+            <div class="max-w-xl text-sm text-light">
+            <h1 class="textlight">Browser Sessions</h1>
+            <h5> Manage and log out your active sessions on other browsers and devices.</h5>
+            If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.
+        </div>
+
+                    <div class="mt-5 space-y-6">
+                <!-- Other Browser Sessions -->
+                                    <div class="flex items-center">
+                        <div class="d-inline">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="width:30px;" class="text-light d-flex">
+                                    <path d="M0 0h24v24H0z" stroke="none"></path><rect x="7" y="4" width="10" height="16" rx="1"></rect><path d="M11 5h2M12 17v.01"></path>
+                                </svg>
+                                                    </div>
+
+                        <div class="">
+                            <div class="text-light">
+                                 - 
+                            </div>
+
+                            <div>
+                                <div class="text-light">
+                                    105.112.124.22,
+
+                                                                            <span class="text-success">This device</span>
+                                                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="flex items-center">
+                        <div class="d-inline">
+                                                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" style="width:30px;" class="text-light d-flex">
+                                    <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                                    </div>
+
+                        <div class="">
+                            <div class="text-light">
+                                OS X - Chrome
+                            </div>
+
+                            <div>
+                                <div class="text-light">
+                                    105.112.124.22,
+
+                                                                            Last active 9 minutes ago
+                                                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+        
+        <div class="flex items-center mt-5">
+            <button type="submit" class="btn btn-primary btn-sm rounded inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150" wire:click="confirmLogout" wire:loading.attr="disabled">
+    Log Out Other Browser Sessions
+</button>
+
+            <div x-data="{ shown: false, timeout: null }"
+    x-init="window.livewire.find('4DODWIaAJP2nmRqR7MxU').on('loggedOut', () => { clearTimeout(timeout); shown = true; timeout = setTimeout(() => { shown = false }, 2000);  })"
+    x-show.transition.opacity.out.duration.1500ms="shown"
+    style="display: none;"
+    class="text-sm text-gray-600 ml-3">
+    Done.
+</div>
+        </div>
+
+        <!-- Log Out Other Devices Confirmation Modal -->
+        <div
+    x-data="{
+        show: window.Livewire.find('4DODWIaAJP2nmRqR7MxU').entangle('confirmingLogout') .defer,
+        focusables() {
+            // All focusable element types...
+            let selector = 'a, button, input, textarea, select, details, [tabindex]:not([tabindex=\'-1\'])'
+
+            return [...$el.querySelectorAll(selector)]
+                // All non-disabled elements...
+                .filter(el => ! el.hasAttribute('disabled'))
+        },
+        firstFocusable() { return this.focusables()[0] },
+        lastFocusable() { return this.focusables().slice(-1)[0] },
+        nextFocusable() { return this.focusables()[this.nextFocusableIndex()] || this.firstFocusable() },
+        prevFocusable() { return this.focusables()[this.prevFocusableIndex()] || this.lastFocusable() },
+        nextFocusableIndex() { return (this.focusables().indexOf(document.activeElement) + 1) % (this.focusables().length + 1) },
+        prevFocusableIndex() { return Math.max(0, this.focusables().indexOf(document.activeElement)) -1 },
+    }"
+    x-init="$watch('show', value => {
+        if (value) {
+            document.body.classList.add('overflow-y-hidden');
+        } else {
+            document.body.classList.remove('overflow-y-hidden');
+        }
+    })"
+    x-on:close.stop="show = false"
+    x-on:keydown.escape.window="show = false"
+    x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()"
+    x-on:keydown.shift.tab.prevent="prevFocusable().focus()"
+    x-show="show"
+    id="7bfef3bbc87b550e8528db202ce06cfb"
+    class="jetstream-modal fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
+    style="display: none;"
+>
+    <div x-show="show" class="fixed inset-0 transform transition-all" x-on:click="show = false" x-transition:enter="ease-out duration-300"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="ease-in duration-200"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    </div>
+
+    <div x-show="show" class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:max-w-2xl sm:mx-auto"
+                    x-transition:enter="ease-out duration-300"
+                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                    x-transition:leave="ease-in duration-200"
+                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+        <div class="bg-dark" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title"><h3 class="text-light">Log Out Other Browser Sessions</h3></h5>
+                </div>
+                <div class="modal-body">
+                    <p class="text-light">Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices.</p>
+                
+
+                <div class="mt-4" x-data="{}" x-on:confirming-logout-other-browser-sessions.window="setTimeout(() => $refs.password.focus(), 250)">
+                    <input  class="border form-control bg-&lt;?php echo e($bg); ?&gt; text-&lt;?php echo e($text); ?&gt; rounded shadow d-block form-control bg-dark text-light" type="password" placeholder="Password" x-ref="password" wire:model.defer="password" wire:keydown.enter="logoutOtherBrowserSessions">
+
+                                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="inline-flex items-center btn btn-secondary px-4 py-2 border" wire:click="$toggle('confirmingLogout')" wire:loading.attr="disabled">
+    Cancel
+</button>
+
+                <button type="submit" class="btn btn-primary btn-sm rounded inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 ml-2" wire:click="logoutOtherBrowserSessions" wire:loading.attr="disabled">
+    Log Out
+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+							</div>
+				
+															<div class="hidden sm:block">
+    <div class="py-8">
+        <div class="border-t border-gray-200"></div>
+    </div>
+</div>
+				
+								<div class="mt-5">
+									<div wire:id="qkR6mipHjXXhoXj69q04" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;qkR6mipHjXXhoXj69q04&quot;,&quot;name&quot;:&quot;profile.delete-user-form&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;dashboard\/manage-account-security&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;77d211be&quot;,&quot;data&quot;:{&quot;confirmingUserDeletion&quot;:false,&quot;password&quot;:&quot;&quot;},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;e4fec68f3dc1453819a41db6cc13579728393582d148c595f2fbc7a4ac444a1f&quot;}}" >
+    <div class="mt-5">
+        <div class="px-4 py-5 bg- shadow text-">
+            <h1 class="text-light">Delete Account</h1>
+        <h5 class="text-light"> Permanently delete your account.</h5>
+        <div class="max-w-xl text-sm text-light">
+            Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.
+        </div>
+
+        <div class="mt-5">
+            <button type="button" class="inline-flex items-center justify-center px-4 py-2 border border-transparent btn btn-danger btn-sm rounded font-semibold text-xs text-white uppercase active:bg-red-600 transition ease-in-out duration-150" wire:click="confirmUserDeletion" wire:loading.attr="disabled">
+    Delete Account
+</button>
+        </div>
+
+        <!-- Delete User Confirmation Modal -->
+        <div
+    x-data="{
+        show: window.Livewire.find('qkR6mipHjXXhoXj69q04').entangle('confirmingUserDeletion') .defer,
+        focusables() {
+            // All focusable element types...
+            let selector = 'a, button, input, textarea, select, details, [tabindex]:not([tabindex=\'-1\'])'
+
+            return [...$el.querySelectorAll(selector)]
+                // All non-disabled elements...
+                .filter(el => ! el.hasAttribute('disabled'))
+        },
+        firstFocusable() { return this.focusables()[0] },
+        lastFocusable() { return this.focusables().slice(-1)[0] },
+        nextFocusable() { return this.focusables()[this.nextFocusableIndex()] || this.firstFocusable() },
+        prevFocusable() { return this.focusables()[this.prevFocusableIndex()] || this.lastFocusable() },
+        nextFocusableIndex() { return (this.focusables().indexOf(document.activeElement) + 1) % (this.focusables().length + 1) },
+        prevFocusableIndex() { return Math.max(0, this.focusables().indexOf(document.activeElement)) -1 },
+    }"
+    x-init="$watch('show', value => {
+        if (value) {
+            document.body.classList.add('overflow-y-hidden');
+        } else {
+            document.body.classList.remove('overflow-y-hidden');
+        }
+    })"
+    x-on:close.stop="show = false"
+    x-on:keydown.escape.window="show = false"
+    x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()"
+    x-on:keydown.shift.tab.prevent="prevFocusable().focus()"
+    x-show="show"
+    id="36ac91a8122577c7b197539ebb1a5123"
+    class="jetstream-modal fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
+    style="display: none;"
+>
+    <div x-show="show" class="fixed inset-0 transform transition-all" x-on:click="show = false" x-transition:enter="ease-out duration-300"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="ease-in duration-200"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    </div>
+
+    <div x-show="show" class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:max-w-2xl sm:mx-auto"
+                    x-transition:enter="ease-out duration-300"
+                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                    x-transition:leave="ease-in duration-200"
+                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+        <div class="bg-dark" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title"><h3 class="text-light">Delete Account</h3></h5>
+                </div>
+                <div class="modal-body">
+                    <p class="text-light">Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.</p>
+            
+                <div class="mt-4" x-data="{}" x-on:confirming-delete-user.window="setTimeout(() => $refs.password.focus(), 250)">
+                    <input  class="border form-control bg-&lt;?php echo e($bg); ?&gt; text-&lt;?php echo e($text); ?&gt; rounded shadow form-control bg-dark text-light" type="password" placeholder="Password" x-ref="password" wire:model.defer="password" wire:keydown.enter="deleteUser">
+
+                                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="inline-flex items-center btn btn-secondary px-4 py-2 border" wire:click="$toggle('confirmingUserDeletion')" wire:loading.attr="disabled">
+    Cancel
+</button>
+
+                <button type="button" class="inline-flex items-center justify-center px-4 py-2 border border-transparent btn btn-danger btn-sm rounded font-semibold text-xs text-white uppercase active:bg-red-600 transition ease-in-out duration-150 ml-2" wire:click="deleteUser" wire:loading.attr="disabled">
+    Delete Account
+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+								</div>
+							                        </div>
+					</div>
+				</div>	
+			</div>
+					<footer class="footer bg-dark text-light">
+					<div class="container-fluid">
+						<div class="text-center row copyright text-align-center">
+							<p>All Rights Reserved &copy; Solana Fortune 2024</p>
+						</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+
+				<!--   Core JS Files   -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+		<script src="../dash/js/core/popper.min.js"></script>
+		<script src="../dash/js/core/bootstrap.min.js"></script>
+		<script src="../dash/js/customs.js"></script>
+		
+		<!-- jQuery UI -->
+		<script src="../dash/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../dash/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+		<!-- jQuery Scrollbar -->
+		<script src="../dash/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+		<!-- jQuery Sparkline -->
+		<script src="../dash/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+		<!-- Sweet Alert -->
+		<script src="../dash/js/plugin/sweetalert/sweetalert.min.js"></script>
+		<!-- Bootstrap Notify -->
+		<script src="../dash/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+		
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/af-2.3.5/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/b-print-1.6.3/r-2.2.5/datatables.min.js"></script>
+
+		<script src="../dash/js/atlantis.min.js"></script>
+		<script src="../dash/js/atlantis.js"></script>
+
+		<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+		<script type="text/javascript">
+			function googleTranslateElementInit() {
+			new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+			}
+		</script>
+
+		<script type="text/javascript">
+			var badWords = [ 
+				'<!--Start of Tawk.to Script-->',
+				'<script type="text/javascript">', 
+				'<!--End of Tawk.to Script-->'
+						];
+			$(':input').on('blur', function(){
+				var value = $(this).val();
+				$.each(badWords, function(idx, word){
+					value = value.replace(word, '');
+				});
+				$(this).val( value);
+			});
+		</script>
+		<script>
+			$(document).ready( function () {
+				$('#ShipTable').DataTable({
+					order: [ [0, 'desc'] ],
+					dom: 'Bfrtip',
+					buttons: [
+					'copy', 'csv', 'print', 'excel','pdf'
+				] 
+				});
+
+				
+				$(".dataTables_length select").addClass("bg-dark text-light");
+				$(".dataTables_filter input").addClass("bg-dark text-light");
+			} );
+		</script>
+		<script>
+			$(document).ready( function () {
+				$('.UserTable').DataTable({
+					order: [ [0, 'desc'] ]
+				});
+				$(".dataTables_length select").addClass("bg-dark text-light");
+				$(".dataTables_filter input").addClass("bg-dark text-light");
+			} );
+		</script>
+				<script src="../livewire/livewire-id=25f025805c3c370f7e87.js" data-turbo-eval="false" data-turbolinks-eval="false"></script><script data-turbo-eval="false" data-turbolinks-eval="false">window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = 'ei4JHAxX82JuKSIVADatogyc0Pmq1eHiwfO8H5zJ';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};document.addEventListener("DOMContentLoaded", function () {window.livewire.start();});</script>
+	    
+</body>
+</html>
+

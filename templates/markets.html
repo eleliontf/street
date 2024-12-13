@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Trade Cryptocurrencies, Stocks, Forex and Options using our 100+ most widely-used technical indicators, widgets and signals.">
+    <meta name="keywords" content="crypto, stock, indices, forex, options, Solana Fortune">
+    <meta name="author" content="Solana Fortune">
+    <meta name="theme-color" content="#2E89EA" />
+    <title>Markets | Solana Fortune</title>
+</head>
+<body>
+    <!-- header begin -->
+    <header class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <img src="img/logo.png" alt="logo" width="160" height="67" class="d-inline-block">
+            </a>
+            <div class="collapse navbar-collapse d-flex justify-content-between d-none d-xl-block" id="navbarNav">
+                   <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('markets') }}">Markets</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('education') }}">Academy</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Support</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('terms') }}">Terms</a></li>
+                </ul>
+                <div class="optional-link d-flex align-items-center ms-4 d-none d-xl-block">
+                    <a href="{{ url_for('login') }}" class="btn btn-link me-3"><i class="fas fa-circle-user"></i>Login</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-info">Register</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header end -->
+
+    <!-- Your page content here -->
+
+    <!-- footer begin -->
+    <footer class="py-5 in-cirro-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row gx-0 mb-3">
+                        <div class="col-md-12 col-lg-3 footer-logo">
+                            <img src="img/logodark.png" alt="footer-logo" width="150" height="58" class="mb-1 d-block">
+                        </div>
+                        <div class="col-md-12 col-lg-9">
+                            <div class="d-flex flex-column flex-xl-row justify-content-xl-end">
+                                <ul class="list-inline in-footer-link order-last order-xl-first">
+                                  <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="{{ url_for('markets') }}">Markets</a></li> 
+                                  <li class="nav-item"><a class="nav-link" href="{{ url_for('education') }}">Academy</a></li> 
+                                  <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Support</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="{{ url_for('terms') }}">Terms</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+    <script src="{{ url_for('static', filename='js/vendors/bootstrap.min.js'}}"></script>
+    
+</body>
+</html>

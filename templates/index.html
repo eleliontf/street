@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- /   20:23:14 GMT -->
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Trade Cryptocurrencies, Stocks, Forex and Options using our 100+ most widely-used technical indicators, widgets and signals.">
+    <meta name="keywords" content="crypto, stock, indices, forex, options">
+    <meta name="author" content="Your Author Name">
+    <meta name="theme-color" content="#2E89EA" />
+
+    <!-- Critical Preload -->
+    <link rel="preload" href="{{ url_for('static', filename='js/vendors/bootstrap.min.js') }}" as="script">
+    
+    <!-- Stylesheet Preload -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+    
+    <!-- Font Preload -->
+    <link rel="preload" href="{{ url_for('static', filename='fonts/fa-brands-400.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='fonts/fa-solid-900.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='fonts/poppins-v20-latin-regular.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='fonts/poppins-v20-latin-300.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='fonts/poppins-v20-latin-700.woff2') }}" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon-precomposed" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+    
+    <!-- Title -->
+    <title>Trade Cryptocurrencies, Stocks, Forex and Options</title>
+    
+    <!-- WhatsApp Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    
+    <!-- WhatsApp Custom CSS -->
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        
+        /* Add WA floating button CSS */
+        .floating {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+        }
+
+        .fab-icon {
+            margin-top: 16px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- page loader begin -->
+    <div class="page-loader w-100 h-100 bg-white d-flex justify-content-center align-items-center position-fixed overflow-hidden">
+        <div class="spinner-grow spinner-grow-sm text-primary"></div>
+        <div class="spinner-grow spinner-grow-sm text-primary"></div>
+        <div class="spinner-grow spinner-grow-sm text-primary"></div>
+    </div>
+    <!-- page loader end -->
+    <!-- header begin -->
+    <header class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" width="160" height="67" class="d-inline-block">
+
+            </a>
+           <div class="collapse navbar-collapse d-flex justify-content-between d-none d-xl-block" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('markets') }}">Markets</a></li>
+
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Support</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('terms') }}">Terms</a></li>
+    </ul>
+    <div class="optional-link d-flex align-items-center ms-4 d-none d-xl-block">
+        <a href="{{ url_for('login') }}" class="btn btn-link me-3"><i class="fas fa-circle-user"></i>Login</a>
+        <a href="{{ url_for('register') }}" class="btn btn-info">Register</a>
+    </div>
+</div>
+
+        </div>
+    </header>
+    <!-- header end -->
+    <main>
+        <!-- slideshow content begin -->
+        <section>
+            <div id="main-slideshow" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <div class="carousel-caption d-flex align-items-center">
+                            <div class="container">
+                                <div class="row gx-md-5 align-items-md-center">
+                                    <div class="col-md-8 col-xl-6 order-first">
+                                        <h1 class="fw-bold display-5">Trade with us for positive results!</h1>
+                                        <!-- <h1 class="fw-bold display-5">Muhammed programming</h1> -->
+                                        <p class="lead mt-3 mb-4 d-none d-xl-block">Trade directly without stress. You don’t need a digital wallet or an account with an exchange.</p>
+                                        <a href="{{ url_for('login') }}" class="btn btn-warning">Start trading<i class="fas fa-bolt ms-1"></i></a>
+                                        <a href="{{ url_for('register') }}" class="btn btn-link ms-3 d-none d-xl-inline"><i class="fas fa-arrow-right"></i>Create Account</a>
+                                    </div>
+                                    <div class="col-md-4 col-xl-6 order-last">
+                                        <div class="in-carousel-image">
+                                            <img src="{{ url_for('static', filename='img/in-cirro-slide-1.jpg') }}" alt="slide" width="856" height="570" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-caption d-flex align-items-center">
+                            <div class="container">
+                                <div class="row gx-md-5 align-items-md-center">
+                                    <div class="col-md-8 col-xl-6 order-first">
+                                        <h1 class="fw-bold display-5">Save time. Get higher return. Multiply wealth.</h1>
+                                        <p class="lead mt-3 mb-4 d-none d-xl-block">Over 100 most widely-used technical indicators. Control your investment with features like SL/TP.</p>
+                                        <a href="{{ url_for('login') }}" class="btn btn-warning">Start trading<i class="fas fa-bolt ms-1"></i></a>
+                                        <a href="{{ url_for('contact') }}" class="btn btn-link ms-3 d-none d-xl-inline"><i class="fas fa-arrow-right"></i>Create Account</a>
+                                    </div>
+                                    <div class="col-md-4 col-xl-6 order-last">
+                                        <div class="in-carousel-image">
+                                            <img src="{{ url_for('static', filename='img/in-cirro-slide-2.jpg') }}" alt="logo" width="160" height="67" class="d-inline-block">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-caption d-flex align-items-center">
+                            <div class="container">
+                                <div class="row gx-md-5 align-items-md-center">
+                                    <div class="col-md-8 col-xl-6 order-first">
+                                        <h1 class="fw-bold display-5">Investment environment with the best pricing</h1>
+                                        <p class="lead mt-3 mb-4 d-none d-xl-block">Discover our Investment Opportunities and Choose the account that fits your trading goals.</p>
+                                        <a href="{{ url_for('login') }}" class="btn btn-warning">Start trading<i class="fas fa-bolt ms-1"></i></a>
+                                        <a href="{{ url_for('login') }}"class="btn btn-link ms-3 d-none d-xl-inline"><i class="fas fa-arrow-right"></i>Create Account</a>
+                                    </div>
+                                    <div class="col-md-4 col-xl-6 order-last">
+                                        <div class="in-carousel-image">
+                                            <img src="{{ url_for('static', filename='img/in-cirro-slide-3.jpg') }}" alt="slide" width="856" height="570" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-indicators"></div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#main-slideshow" data-bs-slide="prev"></button>
+                <button class="carousel-control-next" type="button" data-bs-target="#main-slideshow" data-bs-slide="next"></button>
+            </div>
+        </section>
+        <!-- slideshow content end -->
+        <!-- section content begin -->
+        <section class="py-5 bg-primary text-white in-cirro-1">
+            <div class="container">
+                <div class="row gy-2 gy-md-2 gx-lg-3">
+                    <div class="col-md-12 col-lg-5">
+                        <h1 class="text-white">Experience superior trading conditions</h1>
+                        <p>View our impressive trading statistics and find out more about how we execute trading orders.</p>
+                    </div>
+                    <div class="col-md-12 col-lg-7">
+                        <div class="row row-cols-1 row-cols-md-3 mt-1">
+                            <div class="col">
+                                <div class="border-decor pt-1 pb-3 px-3">
+                                    <h1 class="text-info">&#60;14ms</h1>
+                                    <p class="text-warning mb-0">Ultra-fast Execution</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="border-decor pt-2 pt-md-1 pb-3 px-3">
+                                    <h1 class="text-info">1:200</h1>
+                                    <p class="text-warning mb-0">Maximum Leverage</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="border-decor pt-2 pt-md-1 pb-3 px-3">
+                                    <h1 class="text-info">2100+</h1>
+                                    <p class="text-warning mb-0">Trading Instruments</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <div class="row row-cols-1 row-cols-md-4 row-cols-lg-6 gx-5 gy-3 gy-lg-0">
+                            <div class="col">
+                                <div class="ticker-image d-flex align-items-center">
+                                    <img class="opacity-75" src="{{ url_for('static', filename='img/logo.png') }}" alt="ticker-logo" width="138" height="34">
+                                </div>
+                                <div class="ticker-price">
+                                    2,120.67 (3.40%)<span class="ticker-down-arrow"><i class="fas fa-circle-down"></i></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="ticker-image d-flex align-items-center">
+                                    <img class="opacity-75" src="{{ url_for('static', filename='img/in-cirro-1-ticker-2.svg') }}" alt="ticker-logo" width="139" height="35">
+                                </div>
+                                <div class="ticker-price">
+                                    244.97 (2.70%)<span class="ticker-up-arrow"><i class="fas fa-circle-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="ticker-image d-flex align-items-center">
+                                    <img class="opacity-75" src="{{ url_for('static', filename='img/in-cirro-1-ticker-3.svg') }}" alt="ticker-logo" width="135" height="27">
+                                </div>
+                                <div class="ticker-price">
+                                    160.87 (5.01%)<span class="ticker-down-arrow"><i class="fas fa-circle-down"></i></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="ticker-image d-flex align-items-center">
+                                    <img class="opacity-75" src="{{ url_for('static', filename='img/in-cirro-1-ticker-4.svg') }}" alt="ticker-logo" width="130" height="20">
+                                </div>
+                                <div class="ticker-price">
+                                    639.30 (1.20%)<span class="ticker-up-arrow"><i class="fas fa-circle-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="col d-none d-lg-block">
+                                <div class="ticker-image d-flex align-items-center">
+                                    <img class="opacity-75" src="{{ url_for('static', filename='img/in-cirro-1-ticker-5.svg') }}" alt="ticker-logo" width="137" height="32">
+                                </div>
+                                <div class="ticker-price">
+                                    121.08 (2.30%)<span class="ticker-up-arrow"><i class="fas fa-circle-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="col d-none d-lg-block">
+                                <div class="ticker-image d-flex align-items-center">
+                                    <img class="opacity-75" src="{{ url_for('static', filename='img/in-cirro-1-ticker-6.svg') }}" alt="ticker-logo" width="114" height="31">
+                                </div>
+                                <div class="ticker-price">
+                                    104.78 (1.08%)<span class="ticker-up-arrow"><i class="fas fa-circle-up"></i></span>
+                                </div>
+                            </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                          <div align="center">
+       <!-- TradingView Widget BEGIN -->
+ <div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://www.finfortune.biz/s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+  {
+  "symbols"; [
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "BTC/USD"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "ETH/USD"
+    },
+    {
+      "description": "BNB/USDT",
+      "proName": "BINANCE:BNBUSDT"
+    },
+    {
+      "proName": "KRAKEN:ADAUSD",
+      "title": "ADA/USD"
+    },
+    {
+      "proName": "CURRENCYCOM:XRPUSD",
+      "title": "XRP/USD"
+    }
+  ],
+  "colorTheme"; "light",
+  "isTransparent"; false,
+  "showSymbolLogo"; true,
+  "locale"; "en"
+}
+  </script>
+</div> 
+<!-- TradingView Widget END -->
+        </div>  
+                </div>
+            </div>
+        </section>
+        <!-- section content end -->
+        <!-- section content begin -->
+        <section class="py-5 in-cirro-2">
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <h1 class="mb-1">Trade Crypto Easily.</h1>
+                        <p class="lead">Join the world's fast-growing trading platform for positive results!</p>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gy-2 g-md-2 gx-lg-2">
+                    <div class="col d-flex align-items-stretch">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="{{ url_for('static', filename='img/in-cirro-2-icon-1.svg') }}" alt="icon" width="46" height="46" />
+                                <h2 class="h5 mt-4">Live Trading</h2>
+                                <p>Trade a wide range of popular assets, stocks, forex, crypto and commodities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-stretch">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="{{ url_for('static', filename='img/in-cirro-2-icon-2.svg') }}" alt="icon" width="46" height="46" />
+                                <h2 class="h5 mt-4">Make a Living</h2>
+                                <p>Earn from the financial market, transactions worth billions taking place every day.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-stretch">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="{{ url_for('static', filename='img/in-cirro-2-icon-3.svg') }}" alt="icon" width="46" height="46" />
+                                <h2 class="h5 mt-4">Innovative Platform</h2>
+                                <p>Learn basic concepts of trading/investment and why you should be a part of it.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-stretch">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="{{ url_for('static', filename='img/in-cirro-2-icon-4.svg') }}" alt="icon" width="46" height="46" />
+                                <h2 class="h5 mt-4">Trading Insights</h2>
+                                <p>Get analysis, signals and actionable trade ideas from our expert analysts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section content end -->
+        <!-- section content begin -->
+        <section class="py-5 in-cirro-3">
+            <div class="container">
+                <div class="row d-flex align-items-center gx-5 mb-3">
+                    <div class="col-md-12 col-lg-5 mb-5 mb-md-3 mb-lg-0">
+                        <span class="badge bg-secondary mb-3">Popular instruments</span>
+                        <h1 class="mt-2 mb-1">Live prices on popular markets</h1>
+                        <p class="lead mb-4">Inform your decisions with timely dispatches from our team of global analysts.</p>
+                        <a href="{{ url_for('login') }}" class="btn btn-link"><i class="fas fa-arrow-right"></i>Find out more</a>
+                    </div>
+                    <div class="col-md-12 col-lg-7 mt-md-5">
+                        <div class="card card-body ms-lg-5">
+                                    <div style="height:433px; background-color: #1D2330; overflow:hidden; box-sizing: border-box; border: 1px solid #282E3B; border-radius: 4px; text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #262B38; padding: 0px; margin: 0px; width: 100%;"><div style="height:413px; padding:0px; margin:0px; width: 100%;"><iframe src="https://widget.coinlib.io/widget?type=full_v2&theme=dark&cnt=15&pref_coin_id=1505&graph=yes" width="100%" height="100%" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;"></iframe></div><div style="color: #626B7F; line-height: 14px; font-weight: 400; font-size: 11px; box-sizing: border-box; padding: 2px 6px; width: 100%; font-family: Verdana, Tahoma, Arial, sans-serif;"></div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section content end -->
+                <!-- section content begin -->
+        <section class="py-5 bg-primary text-white in-cirro-8">
+            <div class="container my-2">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gy-2 g-md-2 gx-lg-2">
+                    <div class="col d-flex align-items-center mb-3 mb-md-0">
+                        <div>
+                            <h1 class="text-white">Begin your journey!</h1>
+                            <p class="lead mb-4">Explore different trade types to trade on your preferred market.</p>
+                            <a href="{{ url_for('login') }}" class="btn btn-link"><i class="fas fa-arrow-right"></i>Start Trading</a>
+                           
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-stretch">
+                        <div class="card text-center">
+                            <div class="card-body">
+
+                                <img src="{{ url_for('static', filename='img/in-cirro-2-icon-5.svg') }}" alt="icon" width="56" height="56" />
+                                <h5 class="fw-bold mt-4 text-white">Market Analysis</h5>
+                                <p>More than 100 most widely-used technical indicators and widgets. Control your trades with features like Stop Loss/Take Profit.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-stretch">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <img src="{{ url_for('static', filename='img/in-cirro-2-icon-2.svg') }}" alt="icon" width="56" height="56" />
+                                <h5 class="fw-bold mt-4 text-white">Global Access</h5>
+                                <p>Select from a list of options on widely traded assets representing a particular market sector or national economy.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-stretch">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <img src="{{ url_for('static', filename='img/in-cirro-2-icon-6.svg') }}" alt="icon" width="56" height="56" />
+                                <h5 class="fw-bold mt-4 text-white">Various Assets</h5>
+                                <p>Trade your way with  app for mobile and desktop. Trading hourly, daily or weekly provides unique opportunities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section content end -->
+        <!-- section content begin -->
+        <section class="py-5 in-cirro-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-body">
+                            <div class="row gx-0 d-flex align-items-center position-relative">
+                                <div class="col-md-5 col-lg-6">
+                                    <img src="{{ url_for('static', filename='img/in-cirro-4-people.png') }}"alt="testimonial" width="418" height="441" />
+                                   
+                                </div>
+                                <div class="col-md-7 col-lg-6">
+                                    <blockquote class="blockquote">
+                                        <p>rovide clients with excellent customer service and guarantees account safety.</p>
+                                    </blockquote>
+                                    <h2 class="h6 mt-3 mb-0">Lauren K.</h2>
+                                    <span class="blockquote-footer">Day Trader</span>
+                                    <br><br>
+                                      <div class="mt-3 mt-md-0 ps-md-5">
+                                    <a href="{{ url_for('about') }}" class="btn btn-link"><i class="fas fa-arrow-right"></i>See More About Us</a>
+
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section content end -->
+        
+                <!-- section content begin -->
+        <section class="py-5 in-cirro-3">
+            <div class="container">
+                <div class="row d-flex align-items-center gx-5 mb-3">
+                   <div class="col-md-12 col-lg-5 mb-5 mb-md-3 mb-lg-0">
+                        <span class="badge bg-secondary mb-3">Crypto Purchases</span>
+                        <h1 class="mt-2 mb-1">Buy Crypto with Ease!</h1>
+                        <p class="lead mb-4">Same process, fast approach. Learn everything in one piece.</p>
+                        <a href="{{ url_for('register') }}" class="btn btn-link"><i class="fas fa-arrow-right"></i>Get Started</a>
+                    </div> 
+                    <div class="col-md-12 col-lg-7 mt-md-5">
+                        <div class="card card-body ms-lg-5">
+                        <iframe width="509" height="399" src="https://www.youtube.com/embed/w2qZT1-9UdY" title="How to Buy Bitcoin on LocalBitcoins?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section content end -->
+        
+        <!-- section content begin -->
+        <section class="py-5 in-cirro-9">
+            <div class="container mt-2">
+                <div class="row mb-5 gx-0">
+                    <div class="col-12 col-lg-6 pb-3 pb-lg-0">
+                        <div class="row">
+                            <div class="col-md-7 col-lg-6">
+                                <h1 class="mb-1">Beginner <span class="text-info">Trader</span></h1>
+                                <p class="mb-1">Our finance consultants and managers are always on standby to support your investing needs.</p>
+                            </div>
+                            <div class="col-md-5 col-lg-6 d-flex align-items-end">
+                                <ul class="fa-ul">
+                                    <li> <a href="{{ url_for('index') }}" class="link-dark text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-right text-info"></i></span>Webinars</a></li>
+                                    <li> <a href="{{ url_for('index') }}" class="link-dark text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-right text-info"></i></span>Seminars</a></li>
+                                    <li> <a href="{{ url_for('index') }}" class="link-dark text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-right text-info"></i></span>Financial events</a></li>
+                                    <li> <a href="{{ url_for('index') }}" class="link-dark text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-right text-info"></i></span>Forex calendars</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 border-top border-top-lg-0 border-start-lg pt-3 pt-lg-0 ps-lg-4">
+                        <div class="row">
+                            <div class="col-md-7 col-lg-6">
+                                <h1 class="mb-1">Experienced <span class="text-info">Trader</span></h1>
+                                <p class="mb-1">Explore endless trading opportunities with tight spreads and no commission with ease.</p>
+                            </div>
+                            <div class="col-md-5 col-lg-6 d-flex align-items-end">
+                                <ul class="fa-ul">
+                                    <li><a href="{{ url_for('trading_strategies') }}" class="link-dark text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-right text-info"></i></span>Trading strategis</a></li>
+                                    
+                                    <li><a href="{{ url_for('trading_strategies') }}" class="link-dark text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-right text-info"></i></span>Metatrader</a></li>
+                                    <li><a href="{{ url_for('trading_strategies') }}" class="link-dark text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-right text-info"></i></span>Metatrader</a></li>
+                                    <li><a href="{{ url_for('trading_strategies') }}" class="link-dark text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-right text-info"></i></span>Trading Psychology</a></li>
+                                    <li><a href="{{ url_for('trading_strategies') }}" class="link-dark text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-right text-info"></i></span>Trading Market News</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-10 mt-lg-3">
+                        <div class="row gx-0">
+                            <div class="col-md-12 col-lg-2 border-end-lg d-flex align-items-center justify-content-center justify-content-md-center justify-content-lg-start">
+                                <h6 class="fw-bold text-muted text-center mb-md-2 mb-lg-0">Featured on</h6>
+                            </div>
+                            <div class="col-md-12 col-lg-10">
+                                <div class="row row-cols-1 row-cols-md-4 row-cols-lg-4 gx-0">
+                                    <div class="col text-center">
+                                        <img class="opacity-75 my-2 my-md-1 my-lg-1" src="{{ url_for('static', filename='img/in-cirro-press-1.svg') }}" alt="press-logo" width="128" height="21">
+                                    </div>
+                                    <div class="col text-center">
+                                        <img class="opacity-75 my-2 my-md-1 my-lg-1" src="{{ url_for('static', filename='img/in-cirro-press-2.svg') }}" alt="press-logo" width="128" height="23">
+                                    </div>
+                                    <div class="col text-center">
+                                        <img class="opacity-75 my-2 my-md-1 my-lg-1" src="{{ url_for('static', filename='img/in-cirro-press-3.svg') }}" alt="press-logo" width="127" height="24">
+                                    </div>
+                                    <div class="col text-center">
+                                        <img class="opacity-75 my-2 my-md-1 my-lg-1" src="{{ url_for('static', filename='img/in-cirro-press-4.svg') }}" alt="press-logo" width="126" height="30">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section content end -->
+        <!-- section content begin -->
+        <section class="pt-3 in-cirro-10">
+            <div class="container mt-0 mt-md-2">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-10">
+                        <div class="row d-flex align-items-start">
+                            <div class="col-md-5 col-lg-6 order-last order-md-first">
+                                <img class="w-100" src="{{ url_for('static', filename='img/in-cirro-10-mockup.png') }}" alt="mockup" />
+                            </div>
+                            <div class="col-md-7 col-lg-6 pb-5 order-first order-md-last">
+                                <h1 class="mb-2">Platform by traders, for traders</h1>
+                                <p class="text-muted mb-3 d-none d-lg-block">Seize your opportunity, with technology built designed to ensure that your deal goes through.</p>
+                                <a href="{{ url_for('login') }}">
+                                    <img src="{{ url_for('static', filename='img/in-app-button-apple.svg') }}" alt="apple" width="120" height="40" />
+                                </a>
+                                <a href="{{ url_for('login') }}" class="ms-1">
+                                    <img src="{{ url_for('static', filename='img/in-app-button-google.svg') }}" alt="google" width="135" height="40" />
+                                </a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section content end -->
+        <!-- section content begin -->
+        <section class="py-4 bg-info in-cirro-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 d-md-flex justify-content-md-start align-items-center">
+                        <div class="border-end-md pe-md-5 d-block">
+                            <h2 class="text-white mb-0">Start investing today.</h2>
+                        </div>
+                        <div class="mt-3 mt-md-0 ps-md-5">
+                            <a href="{{ url_for('register') }}" class="btn btn-link"><i class="fas fa-arrow-right"></i>Open account</a>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section content end -->
+    </main>
+    <!-- footer begin -->
+    <footer class="py-5 in-cirro-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row gx-0 mb-3">
+                        <div class="col-md-12 col-lg-3 footer-logo">
+                            <img src="{{ url_for('static', filename='img/logodark.png') }}" alt="footer-logo" width="150" height="58" class="mb-1 d-block">
+
+                            
+                        </div>
+                        <div class="col-md-12 col-lg-9">
+                            <div class="d-flex flex-column flex-xl-row justify-content-xl-end">
+                                <ul class="list-inline in-footer-link order-last order-xl-first">
+
+
+                                    <li class="list-inline-item"><a href="{{ url_for('contact') }}">Contact</a></li>
+                                    <li class="list-inline-item"><a href="{{ url_for('about') }}">FAQ</a></li>
+                                    <li class="list-inline-item"><a href="{{ url_for('education') }}">Careers</a></li>
+
+                                    <li class="list-inline-item"><a href="{{ url_for('login') }}">Integration</a></li>
+
+                                    <li class="list-inline-item"><a href="{{ url_for('login') }}">Security</a></li>
+
+                                </ul>
+                                <div class="social-media-list small hstack gap-3 ms-lg-5 order-first order-xl-last">
+                                    <div><a href="https://www.facebook.com/" class="color-facebook text-decoration-none"><i class="fab fa-facebook-square"></i></a></div>
+                                    <div><a href="https://twitter.com/" class="color-twitter text-decoration-none"><i class="fab fa-twitter"></i></a></div>
+                                    <div> <a href="{{ url_for('index') }}" class="color-linkedin text-decoration-none"><i class="fab fa-linkedin"></i></a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-3 mt-5 d-flex">
+                            <div class="align-self-end">
+                                <p class="mb-0 copyright-text">© 2024 imited</p>
+                                <p class="mb-0 copyright-text">All Rights Reserved.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-9 d-lg-flex justify-content-lg-end d-none d-lg-block">
+                            <div class="align-self-end">
+                                <nav class="nav in-footer-link-2">
+                                    <a class="nav-link border-end-md" href="{{ url_for('risk_disclosure') }}">Risk Disclosure</a>
+                                    <a class="nav-link border-end-md" href="{{ url_for('privacy_policy') }}">Privacy policy</a>
+                                    <a class="nav-link border-end-md" href="{{ url_for('customer_agreement') }}">Customer Agreement</a>
+                                    <a class="nav-link pe-0" href="{{ url_for('aml_policy') }}">AML policy</a>
+                        
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                                
+                        <p class="mb-0 copyright-text"><i>You can start your online trading today with Please feel free to browse our economic calendar. It contains important information on EURUSD, BTCUSD, GBPUSD, USDCHF, BTCETH, AUDUSD, USDCAD, NZDUSD and other currency pairs and trading instruments and provides up-to-date market news and market research. ffers a deposit forex bonus of up to 50%*. You can trade micro-lots (0.01 lots) with /i></p>
+                    </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+    <div class="d-none d-md-block">
+        <a href="{{ url_for('index') }}" class="to-top fas fa-arrow-up text-decoration-none text-white"></a>
+    </div>
+    
+    <!-- WhatsApp -->
+<!-- <a href="https://wa.me/17867233156?text=Hello" class="floating" target="_blank">
+<i class="fab fa-whatsapp fab-icon"></i>
+</a> -->
+    
+    <!-- javascript -->
+    <script src="{{ url_for('static', filename='js/vendors/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/utilities.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/config-theme.js') }}"></script>
+    
+        
+    <!-- Tidio Chat -->
+   <!--<script src="//code.tidio.co/ho6rwcjtwedvs2ged5rwgcjshn5cfohq.js" async></script>-->
+    <!-- END Tidio Chat -->
+</body>
+
+
+<!-- /   20:24:45 GMT -->
+</html>
